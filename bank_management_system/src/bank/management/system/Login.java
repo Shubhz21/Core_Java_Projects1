@@ -79,12 +79,26 @@ public class Login extends JFrame implements ActionListener {
     }
     
     public void actionPerformed(ActionEvent ae){
+        
+        
         if(ae.getSource() == clear){
             cardTextField.setText("");
             pinTextField.setText("");
-    }else if(ae.getSource()== login){
+    } else if(ae.getSource()== login){
         
-    } else if(ae.getSource()== signup){
+    }
+//    try{
+//        if(cardTextField.equals("")){
+//            JOptionPane.showMessageDialog(null, "Card number is Required for login!");
+//        }
+//        if(pinTextField.equals("")){
+//            JOptionPane.showMessageDialog(null, "Password is Requiredfor login!");
+//        }
+//        }catch(Exception e){
+//            System.out.println(e);
+//        }
+    
+    else if(ae.getSource()== signup){
         setVisible(false);
         new SignupOne().setVisible(true);
     }
