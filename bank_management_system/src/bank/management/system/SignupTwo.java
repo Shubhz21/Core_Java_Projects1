@@ -77,15 +77,15 @@ public class SignupTwo extends JFrame  implements ActionListener{
         adhaarNo.setBounds(80,458,300,120);
         add(adhaarNo);
         
-        JLabel seniorCtzn= new JLabel("Senior Citizen:");
-        seniorCtzn.setFont(new Font("Arial",Font.BOLD,17));
-        seniorCtzn.setBounds(80,506,300,120);
-        add(seniorCtzn);
-        
         JLabel existingAccount= new JLabel("Existing Account:");
         existingAccount.setFont(new Font("Arial",Font.BOLD,17));
-        existingAccount.setBounds(80,554,300,120);
+        existingAccount.setBounds(80,506,300,120);
         add(existingAccount);
+        
+        JLabel seniorCtzn= new JLabel("Senior Citizen:");
+        seniorCtzn.setFont(new Font("Arial",Font.BOLD,17));
+        seniorCtzn.setBounds(80,554,300,120);
+        add(seniorCtzn);
         
         
         String valReligion[]= {"Hindu","Muslim","Sikh","Christian","Other"};
@@ -218,8 +218,11 @@ public class SignupTwo extends JFrame  implements ActionListener{
                 JOptionPane.showMessageDialog(null, "Aadhaar is Required");
             }else{
             Conn c = new Conn();
-            String query = "insert into signtwo values ('"+Formno+"','"+sreligion+"','"+scategory+"','"+sincome+"','"+seducation+"','"+soccupation+"','"+span+"','"+saadhaar+"','"+ExistingAcc+"','"+sseniorctzn+"')";
+            String query = "insert into signupTwo values ('"+Formno+"','"+sreligion+"','"+scategory+"','"+sincome+"','"+seducation+"','"+soccupation+"','"+span+"','"+saadhaar+"','"+ExistingAcc+"','"+sseniorctzn+"')";
             c.s.executeUpdate(query);
+            
+            new SignupThree(Formno).setVisible(true);
+                setVisible(false);
             }
             
         }catch(Exception e){
