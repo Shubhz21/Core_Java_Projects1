@@ -16,8 +16,10 @@ public class Deposit extends JFrame implements ActionListener{
     JLabel text;
     String pinnumber;
     
-    Deposit(String pnumber){
-        this.pinnumber=pinnumber;
+    
+    Deposit(String pinnumber){
+        this.pinnumber = pinnumber;
+        
         setLayout(null);
         
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/atm.jpg"));
@@ -78,8 +80,10 @@ public class Deposit extends JFrame implements ActionListener{
                 JOptionPane.showMessageDialog(null,"Rs "+money+" Deposited Successfully" );
                 setVisible(false);
                 new Transactions(pinnumber).setVisible(true);
+                
                 }catch(Exception e){
                     System.out.println(e);
+                    
                 }
             }
         }
@@ -90,6 +94,7 @@ public class Deposit extends JFrame implements ActionListener{
     }
     
     public static void main(String []args){
+        
         new Deposit("");
     }
 }

@@ -17,6 +17,7 @@ public class SignupThree extends JFrame implements ActionListener {
     JButton submit, cancel;
     String Formno;
     
+    
     SignupThree(String Formno){
         this.Formno = Formno;
         
@@ -177,6 +178,7 @@ public class SignupThree extends JFrame implements ActionListener {
                 accountType="Recurring Deposit Account";
             }
                 Random randm = new Random();
+                 
                 String cardnumber = ""+ Math.abs((randm.nextLong()% 9000000L)+ 5040936000000000L);
                 String pinnumber = "" + Math.abs((randm.nextLong()%9000L)+1000L);
                 String facility = "";
@@ -204,10 +206,12 @@ public class SignupThree extends JFrame implements ActionListener {
                         conn.s.executeUpdate(query2);
                         JOptionPane.showMessageDialog(null,"Card No- "+cardnumber+"\n Pin: "+pinnumber);
                         setVisible(false);
-                        new Deposit(pinnumber).setVisible(false);
+                        new Login().setVisible(true);
                     }
+                    
                 }catch(Exception e){
                     System.out.println(e);
+                    
                 }
         }else if(ae.getSource()==cancel){
             setVisible(false);
@@ -217,6 +221,7 @@ public class SignupThree extends JFrame implements ActionListener {
     
     public static void main(String []arg){
         new SignupThree("");
+        
     }
     
 }
