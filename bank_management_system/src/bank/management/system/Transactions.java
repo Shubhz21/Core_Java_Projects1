@@ -47,6 +47,7 @@ public class Transactions extends JFrame implements ActionListener {
         fastcash.setBounds(170,450,100,30);
         fastcash.setBackground(Color.yellow);
         fastcash.setForeground(Color.black);
+        fastcash.addActionListener(this);
         image.add(fastcash);
         
          ministatement = new JButton("Mini Statement");
@@ -94,6 +95,9 @@ public class Transactions extends JFrame implements ActionListener {
         }else if(ae.getSource()== withdrawl){
             setVisible(false);
             new Withdrawl(pinnumber).setVisible(true);
+        }else if(ae.getSource()==fastcash){
+            setVisible(false);
+            new Fastcash(pinnumber).setVisible(true);
         }
     }
     

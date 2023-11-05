@@ -3,7 +3,7 @@ package bank.management.system;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.*;
+import java.util.Date;
 import java.sql.*;
 /**
  *
@@ -69,7 +69,7 @@ public class Deposit extends JFrame implements ActionListener{
             String money = amount.getText();
             //String pnum = pinnumber;
             //Date date = new Date();
-            java.util.Date uDate = new java.util.Date();
+            Date uDate = new Date();
             if(money.equals("")){
                 JOptionPane.showMessageDialog(null, "Please enter the amount you want to deposit!");
             }else{
