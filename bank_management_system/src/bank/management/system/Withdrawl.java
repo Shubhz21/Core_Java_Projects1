@@ -20,6 +20,7 @@ public class Withdrawl extends JFrame implements ActionListener{
     Withdrawl(String pinnumber){
         this.pinnumber = pinnumber;
         
+        
         setLayout(null);
         
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/atm.jpg"));
@@ -75,9 +76,22 @@ public class Withdrawl extends JFrame implements ActionListener{
             }else{
                 try{
                 Conn conn = new Conn();
+                ResultSet rs = conn.s.executeQuery("select * from bank where pin = '"+pinnumber+"'");
+                int balance =0;
+                while(rs.next()){
+                    if(rs.getString("type").equals("Deposit")){
+                        balance += Integer.parseInt(rs.getString("money"));
+                    }else{
+                        balance -= Integer.parseInt(rs.getString("money"));
+                    }
+                }
+                if(ae.getSource() != back && balance < Integer.parseInt(money)){
+                    JOptionPane.showMessageDialog(null,"Insufficient Balance!");
+                    return;
+                }
                 String query ="insert into bank values('"+pinnumber+"','"+uDate+"','Withdrawl','"+money+"')";
                 conn.s.executeUpdate(query);
-                JOptionPane.showMessageDialog(null,"Rs "+money+" withdraw Successfully" );
+                JOptionPane.showMessageDialog(null,"Rs "+money+" Debited Successfully!");
                 setVisible(false);
                 new Transactions(pinnumber).setVisible(true);
                 
