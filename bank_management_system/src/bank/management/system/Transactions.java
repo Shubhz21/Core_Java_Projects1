@@ -14,6 +14,7 @@ public class Transactions extends JFrame implements ActionListener {
     String pinnumber;
     
     Transactions(String pinnumber){
+        
         this.pinnumber= pinnumber;
         setLayout(null);
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/atm.jpg"));
@@ -98,6 +99,15 @@ public class Transactions extends JFrame implements ActionListener {
         }else if(ae.getSource()==fastcash){
             setVisible(false);
             new Fastcash(pinnumber).setVisible(true);
+        }else if(ae.getSource()==pinchange){
+            setVisible(false);
+            new PinChange(pinnumber).setVisible(true);
+        }else if(ae.getSource()==balanceenquiry){
+            setVisible(false);
+            new BalanceEnquiry(pinnumber).setVisible(true);
+        }else if(ae.getSource()==ministatement){
+            
+            new MiniStatement(pinnumber).setVisible(true);
         }
     }
     
