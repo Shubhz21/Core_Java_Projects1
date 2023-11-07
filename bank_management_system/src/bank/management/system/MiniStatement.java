@@ -49,11 +49,18 @@ public class MiniStatement extends JFrame{
         
         try{
             Conn conn = new Conn();
+            int bal = 0;
             ResultSet rs= conn.s.executeQuery("select * from bank where pin ='"+pinnumber+"'");
             while(rs.next()){
                 mini.setText(mini.getText()+ "<html>"+rs.getString("date")+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ rs.getString("type") + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+ rs.getString("money")+ "<br><br></html>");
                 
+                if(rs.getString("type").equals("Deposit")){
+                        bal += Integer.parseInt(rs.getString("money"));
+                    }else{
+                        bal -= Integer.parseInt(rs.getString("money"));
+                    }
             }
+            balance.setText("Your Current Account Balance is Rs. "+bal);
         }catch(Exception e){
             System.out.println(e);
         }

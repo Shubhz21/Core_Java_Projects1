@@ -3,7 +3,7 @@ package bank.management.system;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.*;
+import java.util.Date;
 import java.sql.*;
 /**
  *
@@ -70,7 +70,7 @@ public class Withdrawl extends JFrame implements ActionListener{
             String money = amount.getText();
             //String pnum = pinnumber;
             //Date date = new Date();
-            java.util.Date uDate = new java.util.Date();
+            Date uDate = new Date();
             if(money.equals("")){
                 JOptionPane.showMessageDialog(null, "Please enter the amount you want to Withdraw!");
             }else{
@@ -89,7 +89,7 @@ public class Withdrawl extends JFrame implements ActionListener{
                     JOptionPane.showMessageDialog(null,"Insufficient Balance!");
                     return;
                 }
-                String query ="insert into bank values('"+pinnumber+"','"+uDate+"','Withdrawl','"+money+"')";
+                String query ="insert into bank values('"+pinnumber+"','"+uDate+"', 'Withdrawl' ,'"+money+"')";
                 conn.s.executeUpdate(query);
                 JOptionPane.showMessageDialog(null,"Rs "+money+" Debited Successfully!");
                 setVisible(false);
