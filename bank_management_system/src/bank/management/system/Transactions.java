@@ -85,6 +85,27 @@ public class Transactions extends JFrame implements ActionListener {
         setUndecorated(true);
         setVisible(true);
         
+        
+        Timer timer = new Timer(60000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                dispose();
+                
+                JOptionPane.showMessageDialog(null,"You have been exceeded time limit! \n please sign in again..");
+                System.exit(0);
+                
+            }
+            
+            
+            
+        });
+ 
+        
+        timer.setRepeats(false); 
+        timer.start();
+        
+        
     }
     
     public void actionPerformed(ActionEvent ae){

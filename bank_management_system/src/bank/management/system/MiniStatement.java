@@ -77,7 +77,22 @@ JButton b1, b2;
         b1 = new JButton("Exit");
         b1.addActionListener(this);
         b1.setBounds(20, 500, 100, 25);
-        add(b1);
+        //add(b1);
+        
+        
+        
+        Timer timer = new Timer(5000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                dispose();
+            }
+        });
+
+        
+        timer.setRepeats(false); // Set to false to execute the ActionListener only once
+        timer.start();
+        
         
         
     }
