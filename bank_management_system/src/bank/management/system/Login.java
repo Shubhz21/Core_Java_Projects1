@@ -81,11 +81,16 @@ public class Login extends JFrame implements ActionListener {
     
     public void actionPerformed(ActionEvent ae){
         
+                
+                
         
-        if(ae.getSource() == clear){
+                 if(ae.getSource() == clear){
             cardTextField.setText("");
             pinTextField.setText("");
     } else if(ae.getSource()== login){
+                        
+                        
+                                  
         Conn conn = new Conn();
         String cardnumber = cardTextField.getText();
         String pinnumber = pinTextField.getText();
@@ -95,20 +100,25 @@ public class Login extends JFrame implements ActionListener {
             if(rs.next()){
                 setVisible(false);
                 new Transactions(pinnumber).setVisible(true);
-            }else{
+            }
+            
+            else if(cardnumber.equals("")){
+            JOptionPane.showMessageDialog(null, "Card number is Required for login!");
+        } 
+            else if(pinnumber.equals("")){
+            JOptionPane.showMessageDialog(null, "Password is Required for login!");
+        }
+            
+            else{
                 JOptionPane.showMessageDialog(null, "Incorrect Card no. or Pin");
             }
         }catch(Exception e){
             System.out.println(e);
         }
+    
     }
 //    try{
-//        if(cardTextField.equals("")){
-//            JOptionPane.showMessageDialog(null, "Card number is Required for login!");
-//        }
-//        if(pinTextField.equals("")){
-//            JOptionPane.showMessageDialog(null, "Password is Requiredfor login!");
-//        }
+
 //        }catch(Exception e){
 //            System.out.println(e);
 //        }
