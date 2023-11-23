@@ -17,10 +17,14 @@ public class Deposit extends JFrame implements ActionListener{
     String pinnumber;
     
     
+    
+    
     Deposit(String pinnumber){
         this.pinnumber = pinnumber;
         
         setLayout(null);
+        
+        
         
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/atm.jpg"));
         Image i2 = i1.getImage().getScaledInstance(900,900,Image.SCALE_DEFAULT);
@@ -61,6 +65,10 @@ public class Deposit extends JFrame implements ActionListener{
         setLocation(300,0);
         setUndecorated(true);
         setVisible(true);
+        
+        
+        
+        
     }
     
     public void actionPerformed(ActionEvent ae){
@@ -89,9 +97,22 @@ public class Deposit extends JFrame implements ActionListener{
         }
         if(ae.getSource() == back){
             setVisible(false);
+            
             new Transactions(pinnumber).setVisible(true);
         }
+        
+        
+        
     }
+    
+    
+     
+
+    
+
+    
+    
+    
     
     public static void main(String []args){
         

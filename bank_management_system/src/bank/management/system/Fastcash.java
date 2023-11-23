@@ -14,7 +14,9 @@ public class Fastcash extends JFrame implements ActionListener {
     JButton b100, b1000, b500, b2000, b5000, exit, b10000;
     String pinnumber;
     
+    
     Fastcash(String pinnumber){
+        
         this.pinnumber= pinnumber;
         setLayout(null);
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/atm.jpg"));
@@ -85,11 +87,19 @@ public class Fastcash extends JFrame implements ActionListener {
         setUndecorated(true);
         setVisible(true);
         
+        
+        
+        
+        
     }
+    
+    
+    
     
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource()==exit){
             setVisible(false);
+            
             new Transactions(pinnumber).setVisible(true);
         }else if(ae.getSource() == b100){
             String money = ((JButton)ae.getSource()).getText().substring(3);

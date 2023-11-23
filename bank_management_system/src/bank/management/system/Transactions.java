@@ -100,19 +100,14 @@ public class Transactions extends JFrame implements ActionListener, MouseListene
                 //System.exit(0);
                 new Login().setVisible(true);
                 
+                
             }
-            
-            
-            
+                                   
         });
- 
         
         timer.setRepeats(false); 
         timer.start();
-        
-        
-        
-        
+               
     }
     
      @Override
@@ -150,7 +145,7 @@ public class Transactions extends JFrame implements ActionListener, MouseListene
         restartTimer();
     }
 
-    // Method to restart the timer when there is mouse activity
+    
     private void restartTimer() {
         timer.restart();
     }
@@ -158,24 +153,31 @@ public class Transactions extends JFrame implements ActionListener, MouseListene
     
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource()==exit){
+            timer.stop();
             System.exit(0);
         }else if(ae.getSource()==deposit){
+            
             setVisible(false);
             new Deposit(pinnumber).setVisible(true);
+            timer.stop();
         }else if(ae.getSource()== withdrawl){
+            timer.stop();
             setVisible(false);
             new Withdrawl(pinnumber).setVisible(true);
         }else if(ae.getSource()==fastcash){
+            timer.stop();
             setVisible(false);
             new Fastcash(pinnumber).setVisible(true);
         }else if(ae.getSource()==pinchange){
+            timer.stop();
             setVisible(false);
             new PinChange(pinnumber).setVisible(true);
         }else if(ae.getSource()==balanceenquiry){
+            timer.stop();
             setVisible(false);
             new BalanceEnquiry(pinnumber).setVisible(true);
         }else if(ae.getSource()==ministatement){
-            
+            timer.stop();
             new MiniStatement(pinnumber).setVisible(true);
         }
     }
