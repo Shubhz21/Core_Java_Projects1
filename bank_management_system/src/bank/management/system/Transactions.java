@@ -8,12 +8,16 @@ import java.awt.event.*;
  *
  * @author Shubham Funde
  */
-public class Transactions extends JFrame implements ActionListener {
+public class Transactions extends JFrame implements ActionListener, MouseListener, MouseMotionListener {
     
     JButton deposit, fastcash, withdrawl, ministatement, pinchange, exit, balanceenquiry;
     String pinnumber;
+    Timer timer;
     
     Transactions(String pinnumber){
+        
+        addMouseListener(this);
+        addMouseMotionListener(this);
         
         this.pinnumber= pinnumber;
         setLayout(null);
@@ -86,14 +90,15 @@ public class Transactions extends JFrame implements ActionListener {
         setVisible(true);
         
         
-        Timer timer = new Timer(60000, new ActionListener() {
+         timer = new Timer(5000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 
-                dispose();
                 
                 JOptionPane.showMessageDialog(null,"You have been exceeded time limit! \n please sign in again..");
-                System.exit(0);
+                dispose();
+                //System.exit(0);
+                new Login().setVisible(true);
                 
             }
             
@@ -106,7 +111,50 @@ public class Transactions extends JFrame implements ActionListener {
         timer.start();
         
         
+        
+        
     }
+    
+     @Override
+    public void mouseClicked(MouseEvent e) {
+        restartTimer();
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        restartTimer();
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        restartTimer();
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        restartTimer();
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        restartTimer();
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        restartTimer();
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        restartTimer();
+    }
+
+    // Method to restart the timer when there is mouse activity
+    private void restartTimer() {
+        timer.restart();
+    }
+    
     
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource()==exit){
