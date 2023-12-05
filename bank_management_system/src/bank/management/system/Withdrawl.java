@@ -75,6 +75,20 @@ public class Withdrawl extends JFrame implements ActionListener{
                 JOptionPane.showMessageDialog(null, "Please enter the amount you want to Withdraw!");
             }else{
                 try{
+                    
+                    int withdrawalAmount = Integer.parseInt(money);
+
+                
+                if (withdrawalAmount < 100) {
+                    JOptionPane.showMessageDialog(null, "Withdrawal amount should be atleast 100!");
+                    return;
+                }
+                
+                if (withdrawalAmount % 100 != 0) {
+                    JOptionPane.showMessageDialog(null, "Withdrawal amount should be a multiple of 100!");
+                    return;
+                }
+                    
                 Conn conn = new Conn();
                 ResultSet rs = conn.s.executeQuery("select * from bank where pin = '"+pinnumber+"'");
                 int balance =0;

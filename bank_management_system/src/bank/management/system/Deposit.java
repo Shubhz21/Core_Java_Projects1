@@ -82,6 +82,15 @@ public class Deposit extends JFrame implements ActionListener{
                 JOptionPane.showMessageDialog(null, "Please enter the amount you want to deposit!");
             }else{
                 try{
+                    
+                    int depositAmount = Integer.parseInt(money);
+
+                // Check if withdrawal amount is greater than or equal to 100
+                if (depositAmount < 100) {
+                    JOptionPane.showMessageDialog(null, "Deposit amount should be atleast 100!");
+                    return;
+                }
+                    
                 Conn conn = new Conn();
                 String query ="insert into bank values('"+pinnumber+"','"+uDate+"','Deposit','"+money+"')";
                 conn.s.executeUpdate(query);

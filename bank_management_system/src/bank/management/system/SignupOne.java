@@ -12,7 +12,7 @@ public class SignupOne extends JFrame  implements ActionListener{
     
         
     JTextField name, mothername ,email, address, city, state, maritalstatus, mobile;
-    JButton next;
+    JButton next, cancel;
     String Formno;
     JRadioButton male, female, Married, Single, Other;
     JDateChooser dateChooser;
@@ -176,6 +176,13 @@ public class SignupOne extends JFrame  implements ActionListener{
         next.addActionListener(this);
         add(next);
         
+        cancel = new JButton("Cancel");
+        cancel.setBounds(400,670,100,30);
+        cancel.setBackground(Color.black);
+        cancel.setForeground(Color.white);
+        cancel.addActionListener(this);
+        add(cancel);
+        
         getContentPane().setBackground(Color.white);
         
         setSize(850,800);
@@ -214,10 +221,17 @@ public class SignupOne extends JFrame  implements ActionListener{
         String State = state.getText();
         
         try{
-            if(Name.equals("")){
+             if(ae.getSource()==cancel){
+                 
+                setVisible(false);
+                new Login().setVisible(true);
+            }
+             else if(Name.equals("")){
                 
                 JOptionPane.showMessageDialog(null, "Name is Required");
-            }else{
+            }
+                    
+                    else{
                 
             Conn c = new Conn();
             String query = "insert into signup values ('"+Formno+"','"+Name+"','"+motherName+"','"+Dateofbirth+"','"+gender+"','"+Maritalstatus+"','"+Address+"','"+City+"','"+Mobile+"','"+State+"','"+Email+"')";
