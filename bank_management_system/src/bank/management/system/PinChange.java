@@ -9,8 +9,8 @@ import java.awt.event.*;
  */
 public class PinChange extends JFrame implements ActionListener {
     
-    JLabel text,pintext,repintext;
-        JPasswordField  pin,rpin;
+    JLabel text,ppintext,pintext,repintext;
+        JPasswordField  ppin,pin,rpin;
             JButton change,back;
             String pinnumber;
     
@@ -31,26 +31,38 @@ public class PinChange extends JFrame implements ActionListener {
     text.setBounds(270,280,400,33);
     image.add(text);
     
-     pintext = new JLabel("New Pin:");
+     
+    ppintext = new JLabel("Previous Pin:");
+    ppintext.setForeground(Color.white);
+    ppintext.setFont(new Font("System", Font.BOLD, 15));
+    ppintext.setBounds(165,321,180,26);
+    image.add(ppintext);
+    
+    ppin = new JPasswordField();
+    ppin.setFont(new Font("Raleway", Font.BOLD,25));
+    ppin.setBounds(330,326,180,25);
+    image.add(ppin);
+    
+    pintext = new JLabel("New Pin:");
     pintext.setForeground(Color.white);
     pintext.setFont(new Font("System", Font.BOLD, 15));
-    pintext.setBounds(165,322,180,26);
+    pintext.setBounds(167,369,180,26);
     image.add(pintext);
     
     pin = new JPasswordField();
     pin.setFont(new Font("Raleway", Font.BOLD,25));
-    pin.setBounds(330,324,180,25);
+    pin.setBounds(330,370,180,25);
     image.add(pin);
             
      repintext = new JLabel("Re-Enter Pin:");
     repintext.setForeground(Color.white);
     repintext.setFont(new Font("System", Font.BOLD, 15));
-    repintext.setBounds(165,365,180,26);
+    repintext.setBounds(169,399,180,26);
     image.add(repintext);
     
      rpin = new JPasswordField();
     rpin.setFont(new Font("Raleway", Font.BOLD,25));
-    rpin.setBounds(330,367,180,25);
+    rpin.setBounds(330,400,180,25);
     image.add(rpin);
     
      change = new JButton("Change");
@@ -72,8 +84,11 @@ public class PinChange extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource()==change){
         try{
+            String prpin= ppin.getText();
             String npin= pin.getText();
             String repin = rpin.getText();
+            
+            if(prpin.equals(pinnumber)){
             
             if(!npin.equals(repin)){
                 JOptionPane.showMessageDialog(null,"Entered Pin Does not Match!");
@@ -100,7 +115,14 @@ public class PinChange extends JFrame implements ActionListener {
             
             setVisible(false);
             new Transactions(repin).setVisible(true);
+            }
+            else if(prpin.equals("")){
+                JOptionPane.showMessageDialog(null, "Please Enter Your previous pin");
+            }
             
+            else{
+            JOptionPane.showMessageDialog(null, "Your Previous pin does not match!");
+            }
         }catch(Exception e){
             System.out.println(e);
         }
