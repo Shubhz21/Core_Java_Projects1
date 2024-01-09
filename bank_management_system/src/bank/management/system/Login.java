@@ -109,9 +109,15 @@ public class Login extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null, "Password is Required for login!");
         }
             
-            else{
-                JOptionPane.showMessageDialog(null, "Incorrect Card no. or Pin");
-            }
+            else if (!isValidCardNumber(cardnumber)) {
+                        JOptionPane.showMessageDialog(null, "Invalid Card number. Please check your card number.");
+                    } else if (!isValidPin(pinnumber)) {
+                        JOptionPane.showMessageDialog(null, "Invalid PIN. Please check your PIN.");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Incorrect Card number or PIN. Please check your credentials.");
+                    }
+            
+            
         }catch(Exception e){
             System.out.println(e);
         }
@@ -128,6 +134,39 @@ public class Login extends JFrame implements ActionListener {
         new SignupOne().setVisible(true);
     }
     }
+    
+    private boolean isValidCardNumber(String cardNumber) {
+    
+        
+        Conn conn = new Conn();
+    String query = "select * from login where cardnumber = '" + cardNumber + "'";
+    
+    try {
+        ResultSet rs = conn.s.executeQuery(query);
+        return rs.next();  // Returns true if a record with the specified card number exists
+    } catch (Exception e) {
+        System.out.println(e);
+        
+    }
+        
+    return false;  
+}
+
+private boolean isValidPin(String pin) {
+    
+    Conn conn = new Conn();
+    String query = "select * from login where pin = '" + pin + "'";
+    
+    try {
+        ResultSet rs = conn.s.executeQuery(query);
+        return rs.next();  // Returns true if a record with the specified PIN exists
+    } catch (Exception e) {
+        System.out.println(e);
+        
+    }
+    
+    return false;  
+}
     
     public static void main(String []args){
         new Login();
