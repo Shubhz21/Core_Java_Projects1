@@ -57,6 +57,13 @@ public class Login extends JFrame{
         signup.setBounds(389,200,100,20);
         add(signup);
         
+        ImageIcon i7 = new ImageIcon (ClassLoader.getSystemResource("icon/avtor.jpg"));
+        Image i8 = i7.getImage().getScaledInstance(250,250,Image.SCALE_DEFAULT);
+        ImageIcon i9 = new ImageIcon(i8);
+        JLabel image = new JLabel(i9);
+        image.setBounds(0,0,250,250);
+        add(image);
+        
         setSize(640,300);
         setLocation(400,200);
         setVisible(true);
