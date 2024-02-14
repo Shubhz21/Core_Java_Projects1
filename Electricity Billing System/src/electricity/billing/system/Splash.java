@@ -7,7 +7,9 @@ import java.awt.*;
  *
  * @author Shubham Funde
  */
-public class Splash extends JFrame {
+public  class Splash extends JFrame implements Runnable {
+    
+    Thread t;
     
     Splash(){
      
@@ -32,8 +34,23 @@ public class Splash extends JFrame {
             
         }catch(Exception e){
             e.printStackTrace();
-        }}
+        }
+        }
+        
+        t= new Thread(this);
+        t.start();
+        
         setVisible(true);
+    }
+    
+    public void run(){
+        try{
+            Thread.sleep(6000);
+            
+            setVisible(false);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
     
     public static void main(String [] arg){
