@@ -8,7 +8,7 @@ import java.awt.event.*;
  * @author Shubham Funde
  */
 public class Login extends JFrame implements ActionListener{
-    
+    JButton login, signup, cancel;
     Login(){
         super("Login Page");
         getContentPane().setBackground(Color.WHITE);
@@ -42,21 +42,21 @@ public class Login extends JFrame implements ActionListener{
         
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icon/login.png"));
         Image i2 = i1.getImage().getScaledInstance(16,16,Image.SCALE_DEFAULT);
-        JButton login = new JButton("Login",new ImageIcon(i2));
+         login = new JButton("Login",new ImageIcon(i2));
         login.setBounds(330,160,100,20);
         login.addActionListener(this);
         add(login);
         
         ImageIcon i3 = new ImageIcon(ClassLoader.getSystemResource("icon/cancel.jpg"));
         Image i4 = i3.getImage().getScaledInstance(16,16,Image.SCALE_DEFAULT);
-        JButton cancel = new JButton("Cancel", new ImageIcon(i4));
+         cancel = new JButton("Cancel", new ImageIcon(i4));
         cancel.setBounds(450,160,100,20);
         cancel.addActionListener(this);
         add(cancel);
         
         ImageIcon i5 = new ImageIcon(ClassLoader.getSystemResource("icon/signup.png"));
         Image i6 = i5.getImage().getScaledInstance(16,16,Image.SCALE_DEFAULT);
-        JButton signup = new JButton("Signup",new ImageIcon(i6));
+         signup = new JButton("Signup",new ImageIcon(i6));
         signup.setBounds(389,200,100,20);
         signup.addActionListener(this);
         add(signup);
@@ -81,8 +81,12 @@ public class Login extends JFrame implements ActionListener{
             
         }else if(ae.getSource()==signup){
             
-        }else if(ae.getSource()==cancel){
+            setVisible(false);
+            new Signup().setVisible(true);
             
+        }else if(ae.getSource()==cancel){
+            setVisible(false);
+            System.exit(0);
         }
     }
     

@@ -4,11 +4,15 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.event.*;
+
 /**
  *
  * @author Shubham Funde
  */
 public class Signup extends JFrame implements ActionListener{
+    JButton create, back;
+    Choice accountType;
+    JTextField name,password,username,meter;
     
     Signup(){
 //        setSize(700,400);
@@ -33,7 +37,7 @@ public class Signup extends JFrame implements ActionListener{
         heading.setFont(new Font("Tahoma",Font.BOLD, 14));
         panel.add(heading);
         
-        Choice accountType = new Choice();
+         accountType = new Choice();
         accountType.add("Admin");
         accountType.add("Customer");
         accountType.setBounds(260,52,150,20);
@@ -46,7 +50,7 @@ public class Signup extends JFrame implements ActionListener{
         lblmeter.setFont(new Font("Tahoma",Font.BOLD, 14));
         panel.add(lblmeter);
         
-        JTextField meter = new JTextField();
+         meter = new JTextField();
         meter.setBounds(260,93,150,20);
         panel.add(meter);
         
@@ -56,7 +60,7 @@ public class Signup extends JFrame implements ActionListener{
         lblusername.setFont(new Font("Tahoma",Font.BOLD, 14));
         panel.add(lblusername);
         
-        JTextField username = new JTextField();
+         username = new JTextField();
         username.setBounds(260,133,150,20);
         panel.add(username);
         
@@ -67,7 +71,7 @@ public class Signup extends JFrame implements ActionListener{
         lblname.setFont(new Font("Tahoma",Font.BOLD, 14));
         panel.add(lblname);
         
-        JTextField name = new JTextField();
+         name = new JTextField();
         name.setBounds(260,173,150,20);
         panel.add(name);
         
@@ -78,20 +82,22 @@ public class Signup extends JFrame implements ActionListener{
         lblpassword.setFont(new Font("Tahoma",Font.BOLD, 14));
         panel.add(lblpassword);
         
-        JTextField password = new JTextField();
+         password = new JTextField();
         password.setBounds(260,213,150,20);
         panel.add(password);
         
-        JButton create = new JButton("Create");
+         create = new JButton("Create");
         create.setBackground(Color.black);
         create.setForeground(Color.white);
         create.setBounds(140,260,120,25);
+        create.addActionListener(this);
         panel.add(create);
         
-        JButton back = new JButton("Back");
+         back = new JButton("Back");
         back.setBackground(Color.black);
         back.setForeground(Color.white);
         back.setBounds(280,260,120,25);
+        back.addActionListener(this);
         panel.add(back);
         
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icon/signupImage.png"));
@@ -106,6 +112,30 @@ public class Signup extends JFrame implements ActionListener{
     }
     
     public void actionPerformed(ActionEvent ae){
+        
+        if(ae.getSource()== create){ 
+            
+            String atype = accountType.getSelectedItem();
+            String susername = username.getText();
+            String sname = name.getText();
+            String spassword = password.getText();
+            String smeter = meter.getText();
+            
+            try{
+                
+                Conn c = new Conn();
+                
+                String query = "insert into login values()";
+                
+                
+            }catch(Exception er){
+                er.printStackTrace();
+            }
+            
+    }else if(ae.getSource()==back){
+            setVisible(false);
+            new Login().setVisible(true);
+        }
         
     }
     
